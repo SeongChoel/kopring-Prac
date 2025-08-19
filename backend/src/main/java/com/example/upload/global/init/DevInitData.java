@@ -25,12 +25,26 @@ public class DevInitData {
     public ApplicationRunner devApplicationRunner() {
         return args -> {
             genApiJsonFile("http://localhost:8080/v3/api-docs/apiV1", "apiV1.json");
-            runCmd(
-                    List.of(
-                            "cmd.exe",
-                            "/c",
-                            "npx --package typescript --package openapi-typescript --package punycode openapi-typescript apiV1.json -o ../frontend/src/lib/backend/apiV1/schema.d.ts")
-            );
+
+            String os = System.getProperty("os.name").toLowerCase();
+            List<String> command;
+
+            if (os.contains("win")) {
+                command = List.of(
+                        "cmd.exe",
+                        "/c",
+                        "npx --package typescript --package openapi-typescript --package punycode openapi-typescript apiV1.json -o ../frontend/src/lib/backend/apiV1/schema.d.ts"
+                );
+            } else {
+                // macOS/Linux용 쉘 명령어
+                command = List.of(
+                        "sh",
+                        "-c",
+                        "npx --package typescript --package openapi-typescript --package punycode openapi-typescript apiV1.json -o ../frontend/src/lib/backend/apiV1/schema.d.ts"
+                );
+            }
+
+            runCmd(command);
         };
     }
 
