@@ -12,7 +12,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@SuperBuilder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public abstract class BaseEntity {
 

@@ -6,13 +6,11 @@ import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 import java.util.Objects;
 
 @Getter
 @Setter
-@SuperBuilder
 @NoArgsConstructor
 @MappedSuperclass
 public abstract class GenFile extends BaseTime {
