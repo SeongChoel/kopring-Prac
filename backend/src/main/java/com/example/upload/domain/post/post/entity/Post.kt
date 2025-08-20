@@ -207,10 +207,10 @@ class Post() : BaseTime() {
             }
     }
 
-    fun getCheckActorCanMakeNewGenFileRs(actor: Member?): RsData<Empty?> {
-        if (actor == null) return RsData<Empty?>("401-1", "로그인 후 이용해주세요.")
+    fun getCheckActorCanMakeNewGenFileRs(actor: Member?): RsData<Empty> {
+        if (actor == null) return RsData("401-1", "로그인 후 이용해주세요.")
         if (actor == author) return RsData.OK
-        return RsData<Empty?>("403-1", "작성자만 파일을 업로드할 수 있습니다.")
+        return RsData("403-1", "작성자만 파일을 업로드할 수 있습니다.")
     }
 
     val isTemp: Boolean
