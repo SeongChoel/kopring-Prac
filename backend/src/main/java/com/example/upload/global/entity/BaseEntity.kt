@@ -1,15 +1,13 @@
 package com.example.upload.global.entity
 
 import com.example.upload.standard.util.Ut
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.MappedSuperclass
+import jakarta.persistence.*
 
 @MappedSuperclass
 abstract class BaseEntity {
     @Id // PRIMARY KEY
     @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
+    @Column(name="id")
     private var _id: Long? = null //TODO : 나중에 고침
 
     var id: Long
