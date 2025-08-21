@@ -10,7 +10,14 @@ import jakarta.persistence.MappedSuperclass
 abstract class BaseEntity {
     @Id // PRIMARY KEY
     @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
-    var id: Long? = null //TODO : 나중에 고침
+    private var _id: Long? = null //TODO : 나중에 고침
+
+    var id: Long
+        get() = _id ?: 0
+        set(value) {
+            _id = value
+        }
+
 
     val modelName: String
         get() = Ut.str.lcfirst(this::class.java.simpleName)
