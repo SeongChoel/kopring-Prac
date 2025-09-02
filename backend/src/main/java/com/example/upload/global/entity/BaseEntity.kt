@@ -2,6 +2,7 @@ package com.example.upload.global.entity
 
 import com.example.upload.standard.util.Ut
 import jakarta.persistence.*
+import org.hibernate.Hibernate
 
 @MappedSuperclass
 abstract class BaseEntity {
@@ -16,12 +17,12 @@ abstract class BaseEntity {
             _id = value
         }
 
-
     val modelName: String
         get() = Ut.str.lcfirst(this::class.java.simpleName)
 
     override fun equals(other: Any?): Boolean {
-        if (other == null || javaClass != other.javaClass) return false
+
+        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
         other as BaseEntity
 
         return id == other.id
