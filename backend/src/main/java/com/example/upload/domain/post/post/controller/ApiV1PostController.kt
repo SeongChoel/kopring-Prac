@@ -30,7 +30,7 @@ class ApiV1PostController(
     private val rq: Rq
 ) {
 
-    @JvmRecord
+    
     data class StatisticsResBody(
         @field:NonNull @param:NonNull val postCount: Long,
         @field:NonNull @param:NonNull val postPublishedCount: Long,
@@ -103,7 +103,7 @@ class ApiV1PostController(
         )
     }
 
-    @JvmRecord
+    
     data class WriteReqBody(
         @field:NotBlank val title: String,
         @field:NotBlank val content: String,
@@ -127,7 +127,7 @@ class ApiV1PostController(
         )
     }
 
-    @JvmRecord
+    
     data class PostModifyReqBody(
         @field:NotBlank val title: String,
         @field:NotBlank val content: String,
@@ -175,7 +175,7 @@ class ApiV1PostController(
         )
     }
 
-    @JvmRecord
+    
     data class PostMakeTempResponseBody(
         @field:NonNull @param:NonNull val post: PostDto
     )
